@@ -1,15 +1,23 @@
 <?php
 require_once 'classes/User.php';
+require_once 'config/db.php';
 
 $message = '';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $user = new User($_POST['username'], $_POST['password']);
+if ($_SERVER["REQUEST_METHOD"]==="POST") {
+    $db = new Database();
+    $conn = $db->connect();
+
+    $user = new User($_POST['username'], $_POST['password'], $conn);
 
     if ($user->validate()) {
-        $message = "Signup data is valid (DB connection will be added later).";
+        if ($user->save()) {
+            $message="User registered and saved to database!";
+        } else {
+            $message="Error saving user (username might already exist).";
+        }
     } else {
-        $message = "Please fill in all fields.";
+        $message="Please fill in all fields.";
     }
 }
 ?>
