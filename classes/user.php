@@ -16,10 +16,16 @@ class User{
     }
 
     public function save() {
-    $hashed=password_hash($this->password, PASSWORD_DEFAULT);
+    $check=$this->conn->prepare("SELECT id FROM users WHERE username = :username");
+    $check->bindParam(":username", $this->username);
+    $check->execute();
 
-    $key_plain=bin2hex(random_bytes(16));
+    if ($check->rowCount() > 0) {
+        return "exists";
+    }
 
+    $hashed = password_hash($this->password, PASSWORD_DEFAULT);
+    $key_plain = bin2hex(random_bytes(16));
     $key_encrypted=Crypto::encryptAES($key_plain, $this->password);
 
     $sql="INSERT INTO users (username, password_hash, user_key) 
@@ -30,6 +36,6 @@ class User{
     $stmt->bindParam(":user_key", $key_encrypted);
 
     return $stmt->execute();
-}
+    }
 }
 ?>
