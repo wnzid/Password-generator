@@ -1,4 +1,5 @@
 <?php
+require_once 'classes/Crypto.php';
 class User{
     public $username;
     public $password;
@@ -15,14 +16,20 @@ class User{
     }
 
     public function save() {
-        $hashed=password_hash($this->password, PASSWORD_DEFAULT);
+    $hashed=password_hash($this->password, PASSWORD_DEFAULT);
 
-        $sql="INSERT INTO users (username, password_hash) VALUES (:username, :password)";
-        $stmt=$this->conn->prepare($sql);
-        $stmt->bindParam(":username", $this->username);
-        $stmt->bindParam(":password", $hashed);
+    $key_plain=bin2hex(random_bytes(16));
 
-        return $stmt->execute();
-    }
+    $key_encrypted=Crypto::encryptAES($key_plain, $this->password);
+
+    $sql="INSERT INTO users (username, password_hash, user_key) 
+            VALUES (:username, :password, :user_key)";
+    $stmt=$this->conn->prepare($sql);
+    $stmt->bindParam(":username", $this->username);
+    $stmt->bindParam(":password", $hashed);
+    $stmt->bindParam(":user_key", $key_encrypted);
+
+    return $stmt->execute();
+}
 }
 ?>
