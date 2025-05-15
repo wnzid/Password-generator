@@ -1,5 +1,7 @@
-v1.0 - basic signup (no DB)
-v2 - added database
-v2.1 - updated codes for database
-v3 - generate random key, encrypt using AES with password, and save it
-v3.1 - preventing duplicate username
+-v1.0 - basic signup (no DB)<br/>
+-v2 - added database<br/>
+-v2.1 - updated codes for database<br/>
+-v3 - generate random key, encrypt using AES with password, and save it<br/>
+-v3.1 - preventing duplicate username<br/>
+-v.4 - added login system and dashboard<br/>
+-v4.1 - updated index to provide option what the user wants ie. login or signup<br/>
