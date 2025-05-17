@@ -1,7 +1,8 @@
 <?php
 require_once 'classes/passwordGenerator.php';
 
-$generatedPassword = '';
+$generatedPassword='';
+$error='';
 
 if ($_SERVER["REQUEST_METHOD"]==="POST") {
     $length=(int) $_POST['length'];
@@ -10,8 +11,14 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
     $numbers=(int) $_POST['numbers'];
     $special=(int) $_POST['special'];
 
-    $gen=new PasswordGenerator($length, $uppercase, $lowercase, $numbers, $special);
-    $generatedPassword=$gen->generate();
+    $totalRequested=$uppercase+$lowercase+$numbers+$special;
+
+    if ($totalRequested > $length) {
+        $error="Error: Total characters selected ($totalRequested) exceeds total length ($length).";
+    } else {
+        $gen=new PasswordGenerator($length, $uppercase, $lowercase, $numbers, $special);
+        $generatedPassword=$gen->generate();
+    }
 }
 ?>
 
@@ -41,7 +48,9 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
         <input type="submit" value="Generate">
     </form>
 
-    <?php if (!empty($generatedPassword)): ?>
+    <?php if (!empty($error)): ?>
+        <p style="color:red; font-weight:bold;"><?php echo $error; ?></p>
+    <?php elseif (!empty($generatedPassword)): ?>
         <h3>Generated Password:</h3>
         <p style="font-weight: bold;"><?php echo htmlspecialchars($generatedPassword); ?></p>
     <?php endif; ?>
