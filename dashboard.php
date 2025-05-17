@@ -1,12 +1,12 @@
-<li?php
+<?php
 session_start();
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
     header("Location: login.php");
     exit();
 }
 
-$username=htmlspecialchars($_SESSION['user']);
+$username = $_SESSION['user'];
 ?>
 
 <!DOCTYPE html>
@@ -15,42 +15,40 @@ $username=htmlspecialchars($_SESSION['user']);
     <title>Dashboard</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
+            margin: 40px;
         }
-        .dashboard {
-            width: 60%;
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
             margin: auto;
-            padding-top: 50px;
         }
-        h2 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        a {
+        a.button {
+            display: inline-block;
+            margin: 10px 5px 0 0;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
             text-decoration: none;
-            color: blue;
+            border-radius: 5px;
+        }
+        a.button:hover {
+            background: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="dashboard">
-        <h2>Welcome, <?php echo $username; ?>!</h2>
+    <div class="card">
+        <h2>Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
         <p>This is your dashboard. What would you like to do?</p>
 
-        <ul>
-            <li><a href="#">Generate a Password</a></li>
-            <li><a href="#">Save a Password</a></li>
-            <li><a href="#">View Saved Passwords</a></li>
-            <li><a href="logout.php">Logout</a></li>
-            <li><a class="button" href="index.php">Back to Home</a></li>
-
-        </ul>
+        <a class="button" href="#">Generate a Password</a>
+        <a class="button" href="#">Save a Password</a>
+        <a class="button" href="#">View Saved Passwords</a>
+        <a class="button" href="logout.php">Logout</a>
+        <a class="button" href="index.php">Back to Home</a>
     </div>
 </body>
 </html>
