@@ -8,4 +8,6 @@
 -v4.2 - cleaner dashboard <br/>
 -v4.3 - fixed session handling and added back to home button <br/>
 -v5 -  password generator class + GUI <br/>
--v5.1 - updated files to work with password generator
+-v5.1 - updated files to work with password generator <br/>
+-v5.2 - added validation to prevent total character types exceeding password length <br/>
+ 
