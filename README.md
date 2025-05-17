@@ -5,3 +5,4 @@
 -v3.1 - preventing duplicate username<br/>
 -v.4 - added login system and dashboard<br/>
 -v4.1 - updated index to provide option what the user wants ie. login or signup<br/>
+-v4.2 - cleaner dashboard
