@@ -44,7 +44,7 @@ $username = $_SESSION['user'];
         <h2>Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
         <p>This is your dashboard. What would you like to do?</p>
 
-        <a class="button" href="#">Generate a Password</a>
+        <a class="button" href="generate.php">Generate a Password</a>
         <a class="button" href="#">Save a Password</a>
         <a class="button" href="#">View Saved Passwords</a>
         <a class="button" href="logout.php">Logout</a>
