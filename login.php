@@ -48,7 +48,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
         <input type="submit" value="Login">
     </form>
-
+    
+    <p><a href="index.php">← Back to Home</a></p>
     <p style="color:red;"><?php echo $message; ?></p>
 </body>
 </html>

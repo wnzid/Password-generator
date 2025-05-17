@@ -1,4 +1,4 @@
-<?php
+<li?php
 session_start();
 
 if (!isset($_SESSION['user'])) {
@@ -44,10 +44,12 @@ $username=htmlspecialchars($_SESSION['user']);
         <p>This is your dashboard. What would you like to do?</p>
 
         <ul>
-            <li><a href="#">🔐 Generate a Password</a></li>
-            <li><a href="#">💾 Save a Password</a></li>
-            <li><a href="#">📄 View Saved Passwords</a></li>
-            <li><a href="logout.php">🚪 Logout</a></li>
+            <li><a href="#">Generate a Password</a></li>
+            <li><a href="#">Save a Password</a></li>
+            <li><a href="#">View Saved Passwords</a></li>
+            <li><a href="logout.php">Logout</a></li>
+            <li><a class="button" href="index.php">Back to Home</a></li>
+
         </ul>
     </div>
 </body>
