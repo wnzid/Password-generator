@@ -10,4 +10,5 @@
 -v5 -  password generator class + GUI <br/>
 -v5.1 - updated files to work with password generator <br/>
 -v5.2 - added validation to prevent total character types exceeding password length <br/>
+-v5.3 - save generated password in DB + separate buttons for generate and save <br/>
  
