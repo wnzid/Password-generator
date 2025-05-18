@@ -1,8 +1,17 @@
 <?php
+session_start();
+
 require_once 'classes/passwordGenerator.php';
+require_once 'config/db.php';
 
 $generatedPassword='';
 $error='';
+$saveMessage='';
+
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
 
 if ($_SERVER["REQUEST_METHOD"]==="POST") {
     $length=(int) $_POST['length'];
@@ -10,6 +19,8 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
     $lowercase=(int) $_POST['lowercase'];
     $numbers=(int) $_POST['numbers'];
     $special=(int) $_POST['special'];
+    $platform= trim($_POST['platform']);
+
 
     $totalRequested=$uppercase+$lowercase+$numbers+$special;
 
@@ -18,6 +29,21 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
     } else {
         $gen=new PasswordGenerator($length, $uppercase, $lowercase, $numbers, $special);
         $generatedPassword=$gen->generate();
+
+        $db=new Database();
+        $conn=$db->connect();
+
+        $sql="INSERT INTO passwords (username, platform, password_value) 
+                VALUES (:username, :platform, :password)";
+        $stmt=$conn->prepare($sql);
+        $stmt->bindParam(':username', $_SESSION['user']);
+        $stmt->bindParam(':platform', $platform);
+        $stmt->bindParam(':password', $generatedPassword);
+        if ($stmt->execute()) {
+            $saveMessage="Password saved successfully!";
+        } else {
+            $saveMessage="Failed to save password.";
+        }
     }
 }
 ?>
@@ -30,6 +56,9 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
 <body>
     <h2>Password Generator</h2>
     <form method="post" action="">
+        <label>Platform (e.g. Gmail, Facebook):</label>
+        <input type="text" name="platform" required><br><br>
+
         <label>Total Length:</label>
         <input type="number" name="length" required><br><br>
 
@@ -45,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
         <label>Special Characters:</label>
         <input type="number" name="special" required><br><br>
 
-        <input type="submit" value="Generate">
+        <input type="submit" value="Generate and Save">
     </form>
 
     <?php if (!empty($error)): ?>
@@ -53,6 +82,7 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
     <?php elseif (!empty($generatedPassword)): ?>
         <h3>Generated Password:</h3>
         <p style="font-weight: bold;"><?php echo htmlspecialchars($generatedPassword); ?></p>
+        <p><?php echo $saveMessage; ?></p>
     <?php endif; ?>
 
     <p><a href="dashboard.php">← Back to Dashboard</a></p>
