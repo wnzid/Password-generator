@@ -12,4 +12,4 @@
 -v5.2 - added validation to prevent total character types exceeding password length <br/>
 -v5.3 - save generated password in DB + separate buttons for generate and save <br/>
 -v5.4 - view saved passwords<br/>
- 
+-v5.5 - option to delete in saved passwords<br/>
