@@ -46,7 +46,7 @@ $username = $_SESSION['user'];
 
         <a class="button" href="generate.php">Generate a Password</a>
         <a class="button" href="#">Save a Password</a>
-        <a class="button" href="view_passwords.php">View Saved Passwords</a>
+        <a class="button" href="view_password.php">View Saved Passwords</a>
         <a class="button" href="logout.php">Logout</a>
         <a class="button" href="index.php">Back to Home</a>
     </div>
