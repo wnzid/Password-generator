@@ -13,4 +13,8 @@
 -v5.3 - save generated password in DB + separate buttons for generate and save <br/>
 -v5.4 - view saved passwords<br/>
 -v5.5 - option to delete in saved passwords<br/>
--v5.6 - option to edit in saved passwords
+-v5.6 - option to edit in saved passwords <br/>
+-v5.7 - manual save password page <br/>
+-v6 - full UI restyle <br/>
+-v6.1 - added username for platform <br/>
+-v6.2 - fixed sql and insert binding accordingly
