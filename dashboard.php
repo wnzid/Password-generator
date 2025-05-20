@@ -32,7 +32,7 @@ $username = $_SESSION['user'];
         <div style="margin-top: 30px;">
             <a href="generate.php" style="display: inline-block; margin: 10px; padding: 10px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px;">Generate a Password</a>
             <a href="save_password.php" style="display: inline-block; margin: 10px; padding: 10px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px;">Save a Password</a>
-            <a href="view_passwords.php" style="display: inline-block; margin: 10px; padding: 10px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px;">View Saved Passwords</a>
+            <a href="view_password.php" style="display: inline-block; margin: 10px; padding: 10px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px;">View Saved Passwords</a>
         </div>
     </div>
 
