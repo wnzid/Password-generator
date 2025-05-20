@@ -13,3 +13,4 @@
 -v5.3 - save generated password in DB + separate buttons for generate and save <br/>
 -v5.4 - view saved passwords<br/>
 -v5.5 - option to delete in saved passwords<br/>
+-v5.6 - option to edit in saved passwords
