@@ -18,42 +18,36 @@ include 'views/footer.php';
 <html>
 <head>
     <title>Dashboard</title>
-    <style>
-        body {
-            font-family: Arial;
-            margin: 40px;
-        }
-        .card {
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
-            margin: auto;
-        }
-        a.button {
-            display: inline-block;
-            margin: 10px 5px 0 0;
-            padding: 10px 15px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a.button:hover {
-            background: #0056b3;
-        }
-    </style>
 </head>
-<body>
-    <div class="card">
-        <h2>Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
-        <p>This is your dashboard. What would you like to do?</p>
+<body style="font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f9f9f9; padding: 40px;">
 
-        <a class="button" href="generate.php">Generate a Password</a>
-        <a class="button" href="save_password.php">Save a Password</a>
-        <a class="button" href="view_password.php">View Saved Passwords</a>
-        <a class="button" href="logout.php">Logout</a>
-        <a class="button" href="index.php">Back to Home</a>
+    <table width="100%" cellpadding="10">
+        <tr style="background-color: #ffffff;">
+            <td align="center">
+                <a href="dashboard.php">Dashboard</a> |
+                <a href="generate.php">Generate</a> |
+                <a href="save_password.php">Save</a> |
+                <a href="view_passwords.php">Saved</a> |
+                <a href="logout.php">Logout</a>
+            </td>
+        </tr>
+    </table>
+
+    <div style="max-width: 600px; margin: 40px auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px #ccc;">
+        <h2 style="text-align:center;">Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
+        <p style="text-align:center;">This is your dashboard. What would you like to do?</p>
+
+        <table width="100%" cellpadding="10" style="margin-top: 30px;">
+            <tr>
+                <td align="center"><a href="generate.php">Generate a Password</a></td>
+                <td align="center"><a href="save_password.php">Save a Password</a></td>
+            </tr>
+            <tr>
+                <td align="center"><a href="view_passwords.php">View Saved Passwords</a></td>
+                <td align="center"><a href="index.php">Back to Home</a></td>
+            </tr>
+        </table>
     </div>
+
 </body>
 </html>
