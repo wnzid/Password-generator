@@ -12,39 +12,28 @@ $username = $_SESSION['user'];
 
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Dashboard</title>
 </head>
-<body style="font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f9f9f9; padding: 40px;">
+<body style="font-family: 'Segoe UI', sans-serif; background-color: #f8f8f8; padding: 0; margin: 0;">
 
-    <table width="100%" cellpadding="10">
-        <tr style="background-color: #ffffff;">
-            <td align="center">
-                <a href="dashboard.php">Dashboard</a> |
-                <a href="generate.php">Generate</a> |
-                <a href="save_password.php">Save</a> |
-                <a href="view_passwords.php">Saved</a> |
-                <a href="logout.php">Logout</a>
-            </td>
-        </tr>
-    </table>
+    <div style="background-color: #ffffff; padding: 20px 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="margin: 0; font-weight: 600;">Password Manager</h2>
+        <a href="logout.php" style="text-decoration: none; background-color: #dc3545; color: white; padding: 8px 16px; border-radius: 6px;">Logout</a>
+    </div>
 
-    <div style="max-width: 600px; margin: 40px auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px #ccc;">
-        <h2 style="text-align:center;">Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
-        <p style="text-align:center;">This is your dashboard. What would you like to do?</p>
+    <div style="max-width: 600px; margin: 60px auto; background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); text-align: center;">
+        <h3>Welcome, <?php echo htmlspecialchars($username); ?>!</h3>
+        <p>This is your dashboard. What would you like to do?</p>
 
-        <table width="100%" cellpadding="10" style="margin-top: 30px;">
-            <tr>
-                <td align="center"><a href="generate.php">Generate a Password</a></td>
-                <td align="center"><a href="save_password.php">Save a Password</a></td>
-            </tr>
-            <tr>
-                <td align="center"><a href="view_passwords.php">View Saved Passwords</a></td>
-                <td align="center"><a href="index.php">Back to Home</a></td>
-            </tr>
-        </table>
+        <div style="margin-top: 30px;">
+            <a href="generate.php" style="display: inline-block; margin: 10px; padding: 10px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px;">Generate a Password</a>
+            <a href="save_password.php" style="display: inline-block; margin: 10px; padding: 10px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px;">Save a Password</a>
+            <a href="view_passwords.php" style="display: inline-block; margin: 10px; padding: 10px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px;">View Saved Passwords</a>
+        </div>
     </div>
 
 </body>
