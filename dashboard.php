@@ -2,7 +2,6 @@
 session_start();
 
 $pageTitle="Dashboard";
-include 'views/header.php';
 
 if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
     header("Location: login.php");
@@ -11,7 +10,6 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
 
 $username = $_SESSION['user'];
 
-include 'views/footer.php';
 ?>
 
 <!DOCTYPE html>
