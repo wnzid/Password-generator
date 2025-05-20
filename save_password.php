@@ -38,18 +38,23 @@ if ($_SERVER["REQUEST_METHOD"]==="POST") {
     <title>Save a Password</title>
 </head>
 <body>
-    <h2>Manually Save a Password</h2>
-    <form method="post">
-        <label>Platform:</label><br>
-        <input type="text" name="platform" required><br><br>
+    <div style="max-width: 500px; margin: 60px auto; background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+        <h3 style="text-align: center;">Manually Save a Password</h3>
 
-        <label>Password:</label><br>
-        <input type="text" name="password" required><br><br>
+        <form method="post" action="">
+            <label>Platform:</label>
+            <input type="text" name="platform" required><br><br>
 
-        <input type="submit" value="Save Password">
-    </form>
+            <label>Password:</label>
+            <input type="text" name="password" required><br><br>
 
-    <p><?php echo $message; ?></p>
-    <p><a href="dashboard.php">← Back to Dashboard</a></p>
+            <input type="submit" value="Save Password">
+        </form>
+
+        <?php if (!empty($message)): ?>
+            <p style="margin-top: 20px; text-align: center;"><?php echo $message; ?></p>
+        <?php endif; ?>
+    </div>
+
 </body>
 </html>

@@ -38,18 +38,23 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     <title>Login</title>
 </head>
 <body>
-    <h2>User Login</h2>
-    <form method="post" action="login.php">
-        <label>Username:</label><br>
-        <input type="text" name="username"><br><br>
+    <div style="max-width: 400px; margin: 60px auto; background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+        <h3 style="text-align: center;">Login</h3>
 
-        <label>Password:</label><br>
-        <input type="password" name="password"><br><br>
+        <form method="post" action="">
+            <label>Username:</label>
+            <input type="text" name="username" required><br><br>
 
-        <input type="submit" value="Login">
-    </form>
-    
-    <p><a href="index.php">← Back to Home</a></p>
-    <p style="color:red;"><?php echo $message; ?></p>
+            <label>Password:</label>
+            <input type="password" name="password" required><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+
+        <?php if (!empty($message)): ?>
+            <p style="margin-top: 20px; text-align: center;"><?php echo $message; ?></p>
+        <?php endif; ?>
+    </div>
+
 </body>
 </html>
